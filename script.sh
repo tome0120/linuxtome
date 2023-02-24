@@ -38,7 +38,7 @@ alias bsis='bettersis'
 alias meteo='curl  wttr.in/verona'
 #meteo verona
 
-alias apti='apt install'
+alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
 
 echo "eseguire questo comando per abilitare le modifiche 'source ~/.bashrc' "
