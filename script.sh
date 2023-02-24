@@ -32,9 +32,6 @@ alias hms='scrcpy -m 1024'
 #connesione trammite cavo o protocollo tcpip
 # di un telefono o smartphone android
 
-alias bsis='bettersis'
-#abbreviazione bettersis in bsis 
-
 alias meteo='curl  wttr.in/verona'
 #meteo verona
 

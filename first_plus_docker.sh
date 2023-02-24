@@ -6,7 +6,15 @@ sudo apt update
 
 sudo apt upgrade -y
 
-wget https://raw.githubusercontent.com/tome0120/linuxtome/main/first_plus_docker.sh -O first_plus_docker.sh && chmod +x first_plus_docker.sh && ./first_plus_docker.sh && rm first_plus_docker.sh && source ~/.bashrc
+wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_docker.sh -O install_docker.sh && chmod +x install_docker.sh && ./install_docker.sh && rm install_docker.sh
+
+wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_docker_compose.sh -O install_docker_compose.sh && chmod +x install_docker_compose.sh && ./install_docker_compose.sh && rm install_docker_compose.sh
+
+wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_portainer.sh -O install_portainer.sh && chmod +x install_portainer.sh && ./install_portainer.sh && rm install_portainer.sh
+
+wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_apache.sh -O install_apache.sh && chmod +x install_apache.sh && ./install_apache.sh && rm install_apache.sh
+
+source ~/.bashrc
 
 echo "	
 alias stdn='shutdown now'
@@ -33,9 +41,6 @@ alias rbash='source ~/.bashrc'
 alias hms='scrcpy -m 1024'
 #connesione trammite cavo o protocollo tcpip
 # di un telefono o smartphone android
-
-alias bsis='bettersis'
-#abbreviazione bettersis in bsis 
 
 alias meteo='curl  wttr.in/verona'
 #meteo verona
