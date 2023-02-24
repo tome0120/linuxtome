@@ -6,7 +6,7 @@ sudo apt update
 
 sudo apt upgrade -y
 
-wget https://raw.githubusercontent.com/firstplustech/first_plus_docker/master/first_plus_docker.sh
+wget https://raw.githubusercontent.com/tome0120/linuxtome/main/first_plus_docker.sh -O first_plus_docker.sh && chmod +x first_plus_docker.sh && ./first_plus_docker.sh && rm first_plus_docker.sh && source ~/.bashrc
 
 echo "	
 alias stdn='shutdown now'
@@ -44,3 +44,5 @@ alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
 
 echo "eseguire questo comando per abilitare le modifiche 'source ~/.bashrc' "
+
+rm first_plus_docker.sh
