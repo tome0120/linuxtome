@@ -32,8 +32,20 @@ alias hms='scrcpy -m 1024'
 #connesione trammite cavo o protocollo tcpip
 # di un telefono o smartphone android
 
-alias meteo='curl  wttr.in/verona'
+alias meteo='curl wttr.in/verona'
 #meteo verona
+
+alias aptu='sudo apt update && sudo apt upgrade -y'
+#aggiornamento e upgrade abbreviato
+
+alias ipa='ip -c a'
+#ip address abbreviato con colori per evidenziare gli indirizzi ip
+
+alias ch='history -c'
+#pulizia cronologia bash
+
+alias sn='sudo nano'
+#nano con permessi di root
 
 alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
