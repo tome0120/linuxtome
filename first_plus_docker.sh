@@ -8,7 +8,5 @@ wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_docker_co
 
 wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_portainer.sh -O install_portainer.sh && chmod +x install_portainer.sh && ./install_portainer.sh && rm install_portainer.sh
 
-wget https://raw.githubusercontent.com/tome0120/linuxtome/main/install_apache.sh -O install_apache.sh && chmod +x install_apache.sh && ./install_apache.sh && rm install_apache.sh
-
 
 rm first_plus_docker.sh
