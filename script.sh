@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install openssh-server wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 -y
+sudo apt install openssh-server sl wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 -y
 
 sudo apt update
 
@@ -27,10 +27,6 @@ alias cbash='nano ~/.bashrc'
 
 alias rbash='source ~/.bashrc'
 #ricaricare questo file per attivare modifiche fatte al file
-
-alias hms='scrcpy -m 1024'
-#connesione trammite cavo o protocollo tcpip
-# di un telefono o smartphone android
 
 alias meteo='curl wttr.in/verona'
 #meteo verona
