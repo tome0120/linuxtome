@@ -43,6 +43,9 @@ alias ch='history -c'
 alias sn='sudo nano'
 #nano con permessi di root
 
+alias dc='docker-compose'
+#docker compose abbreviato
+
 alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
 
