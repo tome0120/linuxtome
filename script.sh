@@ -7,7 +7,7 @@ sudo apt update
 sudo apt upgrade -y
 
 echo "	
-alias stdn='shutdown now'
+alias stdn='sudo shutdown now'
 #comando abbreviato per lo spegnimento del computer
 
 alias rst='sudo reboot'
