@@ -47,3 +47,5 @@ alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
 
 echo "eseguire questo comando per abilitare le modifiche 'source ~/.bashrc' "
+
+rm script.sh
