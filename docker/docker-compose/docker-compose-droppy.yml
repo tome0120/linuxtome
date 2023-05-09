@@ -1,0 +1,11 @@
+version: '2'
+services:
+  droppy:
+    container_name: droppy
+    image: silverwind/droppy
+    ports:
+      - 8989:8989
+    volumes:
+      - /docker/Droppy:/config
+      - /docker/Droppy/files:/files
+    restart: unless-stopped
