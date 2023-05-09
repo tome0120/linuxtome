@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install docker docker.io sl openssh-server wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 -y
+sudo apt install zip unzip nodejs npm docker docker.io sl openssh-server wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 -y
 
 sudo apt update
 
