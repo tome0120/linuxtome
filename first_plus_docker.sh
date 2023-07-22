@@ -50,9 +50,12 @@ alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
 
 
+curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 
+chmod +x /usr/local/bin/docker-compose
 
+docker-compose --version
 
 sudo docker volume create portainer_data
 
@@ -83,4 +86,4 @@ echo "eseguire questo comando per abilitare le modifiche 'source ~/.bashrc' "
 
 docker-compose --version
 
-echo " esegui 'docker-compose up -d' per avviare il container di portainer"
+echo " esegui 'docker-compose --version ' per verificare che docker-compose sia stato installato correttamente"
