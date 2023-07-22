@@ -49,11 +49,9 @@ alias dc='docker-compose'
 alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
 
-sudo curl -L "https://github.com/docker/compose/releases/download/latest/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-sudo chmod +x /usr/local/bin/docker-compose
 
-docker-compose --version
+
 
 
 sudo docker volume create portainer_data
@@ -82,3 +80,7 @@ sudo docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -
 rm first_plus_docker.sh
 
 echo "eseguire questo comando per abilitare le modifiche 'source ~/.bashrc' "
+
+docker-compose --version
+
+echo " esegui 'docker-compose up -d' per avviare il container di portainer"
