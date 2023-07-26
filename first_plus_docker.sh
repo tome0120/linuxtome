@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install zip unzip nodejs npm docker docker.io sl openssh-server wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 -y
+sudo apt install zip unzip nodejs npm docker-compose docker.io sl openssh-server wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 -y
 
 sudo apt update
 
@@ -48,10 +48,6 @@ alias dc='docker-compose'
 
 alias apti='sudo apt install $1 -y'
 #apt install abbreviato ">> ~/.bashrc
-
-
-curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
 
 chmod +x /usr/local/bin/docker-compose
 
