@@ -31,7 +31,7 @@ echo "use this comand for ran evry 1 minuts 'crontab -e'"
 echo "use this frase for ran evry q minuts '*/1 * * * * /bin/bash /root/cloudflare-ddns-updater/cloudflare.sh'"
 
 
-
+chmod +x cloudflare.70m3.eu.sh cloudflare.70m3.me.sh cloudflare.vpn.70m3.site.sh cloudflare.vpn.70m3.it.sh cloudflare.vpn.70m3ll3r1.it.sh cloudflare.vpn.marcotomelleri.it.sh
 
 
 ./cloudflare.70m3.eu.sh
