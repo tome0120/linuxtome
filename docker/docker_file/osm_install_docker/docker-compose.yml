@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+    osm:
+        image: ubuntu:lastest
+        command: bash -c "apt-get update && apt-get upgrade -y && apt-get install apache2 mysql-server php php-cli php-mysql php-common php-zip php-mbstring php-xmlrpc php-curl php-soap php-gd php-xml php-intl php-ldap php-curl php-json php-cgi -y"
+        
