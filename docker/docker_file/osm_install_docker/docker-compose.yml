@@ -1,6 +1,10 @@
-version: '3.3'
+version: '3'
 services:
-    osm:
-        image: ubuntu:lastest
-        command: bash -c "apt-get update && apt-get upgrade -y && apt-get install apache2 mysql-server php php-cli php-mysql php-common php-zip php-mbstring php-xmlrpc php-curl php-soap php-gd php-xml php-intl php-ldap php-curl php-json php-cgi -y"
-        
+  ubuntu-container:
+    image: ubuntu:22.04
+    command: /bin/bash -c "apt update && apt upgrade -y && apt install -y apache2 && a2enmod rewrite && systemctl restart apache2 && apt install -y mysql-server && apt install -y php php-cli php-mysql php-common php-zip php-mbstring php-xmlrpc php-curl php-soap php-gd php-xml php-intl php-ldap php-curl php-json php-cgi && echo 'CREATE USER ''utente_osm''@''localhost'' IDENTIFIED BY ''PASSWORD'';' > /tmp/init.sql && echo 'CREATE DATABASE openstamanager;' >> /tmp/init.sql && echo 'GRANT ALL PRIVILEGES ON openstamanager.* TO ''utente_osm''@''localhost'';' >> /tmp/init.sql && echo 'FLUSH PRIVILEGES;' >> /tmp/init.sql && echo 'QUIT' >> /tmp/init.sql && mysql -u root -p < /tmp/init.sql && rm /tmp/init.sql && sed -i 's/display_errors = On/display_errors = Off/' /etc/php/7.2/apache2/php.ini && sed -i 's/max_execution_time = 30/max_execution_time = 180/' /etc/php/7.2/apache2/php.ini && sed -i 's/max_input_time = 60/max_input_time = 180/' /etc/php/7.2/apache2/php.ini && sed -i 's/max_input_vars = 1000/max_input_vars = 5000/' /etc/php/7.2/apache2/php.ini && sed -i 's/memory_limit = 128M/memory_limit = 512M/' /etc/php/7.2/apache2/php.ini && sed -i 's/post_max_size = 8M/post_max_size = 32M/' /etc/php/7.2/apache2/php.ini && sed -i 's/session.gc_maxlifetime = 1440/session.gc_maxlifetime = 1440/' /etc/php/7.2/apache2/php.ini && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 32M/' /etc/php/7.2/apache2/php.ini && sed -i 's/zlib.output_compression = Off/zlib.output_compression = On/' /etc/php/7.2/apache2/php.ini && cd /var/www/html && sudo mkdir osm && cd osm && sudo wget -O openstamanager.zip https://github.com/devcode-it/openstamanager/releases/download/v2.4.49/openstamanager-2.4.49.zip && unzip openstamanager.zip && rm -rf openstamanager.zip"
+    ports:
+      - 80:80
+      - 3306:3306
+    volumes:
+        - ./osm:/var/www/html/osm
