@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# Aggiorna i pacchetti installati
-sudo apt update
-sudo apt upgrade -y
-
-# Installa i pacchetti richiesti
-sudo apt install openssh-server sl wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw snap freerdp2-dev freerdp2-x11 docker.io docker-compose -y
-
-# Aggiorna i pacchetti installati
-sudo apt update
-sudo apt upgrade -y
-
 # Aggiunge gli alias al file .bashrc
 cat <<EOT >> ~/.bashrc
 alias stdn='sudo shutdown now'
@@ -30,19 +19,145 @@ alias apti='sudo apt install \$1 -y'
 alias docker='sudo docker'
 EOT
 
-# Chiede all'utente se vuole installare Portainer
-echo "Vuoi installare Portainer? (y/n)"
-read -r risposta
 
-if [[ "$risposta" =~ ^[Yy]$ ]]; then
 
-  # Crea il volume per i dati di Portainer
-  sudo docker volume create portainer_data
 
-  # Avvia Portainer
-  sudo docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /srv/portainer:/data portainer/portainer
+# Aggiorna i pacchetti installati
+sudo apt update
+sudo apt upgrade -y
 
+# Installa i pacchetti richiesti
+sudo apt install openssh-server sl wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw freerdp2-dev freerdp2-x11 docker.io docker-compose -y
+
+# Aggiorna i pacchetti installati
+sudo apt update
+sudo apt upgrade -y
+
+# Verifica se le app di sono installate
+if [ -x "$(command -v docker)" ]; then
+  echo "Docker è installato"
+else
+  echo "Docker non è installato"
 fi
+
+if [ -x "$(command -v docker-compose)" ]; then
+  echo "Docker Compose è installato"
+else
+  echo "Docker Compose non è installato"
+fi
+
+if [ -x "$(command -v sl)" ]; then
+  echo "sl è installato"
+else
+  echo "sl non è installato"
+fi
+
+if [ -x "$(command -v wget)" ]; then
+  echo "wget è installato"
+else
+  echo "wget non è installato"
+fi
+
+if [ -x "$(command -v python3)" ]; then
+  echo "python3 è installato"
+else
+  echo "python3 non è installato"
+fi
+
+if [ -x "$(command -v curl)" ]; then
+  echo "curl è installato"
+else
+  echo "curl non è installato"
+fi
+
+if [ -x "$(command -v git)" ]; then
+  echo "git è installato"
+else
+  echo "git non è installato"
+fi
+
+if [ -x "$(command -v nano)" ]; then
+  echo "nano è installato"
+else
+  echo "nano non è installato"
+fi
+
+if [ -x "$(command -v htop)" ]; then
+  echo "htop è installato"
+else
+  echo "htop non è installato"
+fi
+
+if [ -x "$(command -v make)" ]; then
+  echo "make è installato"
+else
+  echo "make non è installato"
+fi
+
+if [ -x "$(command -v perl)" ]; then
+  echo "perl è installato"
+else
+  echo "perl non è installato"
+fi
+
+if [ -x "$(command -v gcc)" ]; then
+  echo "gcc è installato"
+else
+  echo "gcc non è installato"
+fi
+
+if [ -x "$(command -v bison)" ]; then
+  echo "bison è installato"
+else
+  echo "bison non è installato"
+fi
+
+if [ -x "$(command -v flex)" ]; then
+  echo "flex è installato"
+else
+  echo "flex non è installato"
+fi
+
+if [ -x "$(command -v build-essential)" ]; then
+  echo "build-essential è installato"
+else
+  echo "build-essential non è installato"
+fi
+
+if [ -x "$(command -v software-properties-common)" ]; then
+  echo "software-properties-common è installato"
+else
+  echo "software-properties-common non è installato"
+fi
+
+if [ -x "$(command -v apt-transport-https)" ]; then
+  echo "apt-transport-https è installato"
+else
+  echo "apt-transport-https non è installato"
+fi
+
+if [ -x "$(command -v ufw)" ]; then
+  echo "ufw è installato"
+else
+  echo "ufw non è installato"
+fi
+
+if [ -x "$(command -v freerdp2-dev)" ]; then
+  echo "freerdp2-dev è installato"
+else
+  echo "freerdp2-dev non è installato"
+fi
+
+if [ -x "$(command -v freerdp2-x11)" ]; then
+  echo "freerdp2-x11 è installato"
+else
+  echo "freerdp2-x11 non è installato"
+fi
+
+
+
+
+
 
 # Chiede all'utente se vuole installare Uptime Kuma
 echo "Vuoi installare Uptime Kuma? (y/n)"
