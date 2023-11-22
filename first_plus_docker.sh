@@ -47,7 +47,10 @@ alias dc='docker-compose'
 #docker compose abbreviato
 
 alias apti='sudo apt install $1 -y'
-#apt install abbreviato ">> ~/.bashrc
+#apt install abbreviato 
+
+alias docker='sudo docker'
+#docker con permessi di sudo">> ~/.bashrc
 
 chmod +x /usr/local/bin/docker-compose
 
@@ -66,13 +69,6 @@ sudo docker rm portainer
 sudo docker pull portainer/portainer-ce:latest
 
 sudo docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-
-
-
-
-
-
-
 
 
 
