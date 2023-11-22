@@ -47,10 +47,10 @@ alias dc='docker-compose'
 #docker compose abbreviato
 
 alias apti='sudo apt install $1 -y'
-#apt install abbreviato ">> ~/.bashrc
+#apt install abbreviato
 
 alias docker='sudo docker'
-#docker con permessi di root
+#docker con permessi di root">> ~/.bashrc
 
 echo "eseguire questo comando per abilitare le modifiche 'source ~/.bashrc' "
 
