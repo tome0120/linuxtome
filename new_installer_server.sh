@@ -219,7 +219,7 @@ services:
       - /path/to/config:/config
     ports:
       - 3000:3000
-      - 3001:3001
+      - 3010:3001
     shm_size: "1gb"
     restart: unless-stopped
 EOF
@@ -842,8 +842,12 @@ read -p "Vuoi un riepilogo di tutti gli alias aggiunti/creati? (y/n)" riepilogo
 if [[ "$riepilogo" =~ ^[Yy]$ ]]; then
 
   # Mostra un riepilogo di tutti gli alias aggiunti/creati
-  echo "Alias per aggiornare portainer: updateportainer"
-  echo "Alias per aggiornare uptimekuma: updateuptimekuma"
+  if [[ "$portainer" =~ ^[Yy]$ ]]; then
+    echo "Alias per aggiornare portainer: updateportainer"
+  fi
+  if [[ "$kuma" =~ ^[Yy]$ ]]; then
+      echo "Alias per aggiornare uptimekuma: updateuptimekuma"
+  fi
   echo "Alias per spegnere il pc: stdn"
   echo "Alias per riavviare il pc: rst"
   echo "Alias per pulire il terminale: clr"
@@ -947,12 +951,38 @@ if [[ "$aptinstall" =~ ^[Yy]$ ]]; then
 fi
 
 # Chiede all'utente se vuole creatre un alias  che quando scrive stdn gli chiede se vuole spegnere il pc
-read -p "Vuoi creare un alias che quando scrivv stdn ti chiede se vuole spegnere il pc? (y/n)" stdn
+read -p "Vuoi creare un alias che quando scrivi stdn ti chiede se vuole spegnere il pc? (y/n)" stdn
 if [[ "$stdn" =~ ^[Yy]$ ]]; then
 
   # Crea gli alias per spegnere il pc
   cat << EOF >> ~/.bashrc
   alias stdn='echo "Vuoi spegnere il pc? (y/n)" && read spegnere && if [[ "\$spegnere" =~ ^[Yy]$ ]]; then sudo shutdown now ; else echo "Spegnimento annullato" ; fi'
 EOF
+fi
+# Chiede all'utente se vuole creare un alias che quando scrive rst gli chiede se vuole riavviare il pc
+read -p "Vuoi creare un alias che quando scrivv rst ti chiede se vuole riavviare il pc? (y/n)" rst
+if [[ "$rst" =~ ^[Yy]$ ]]; then
+
+  # Crea gli alias per riavviare il pc
+  cat << EOF >> ~/.bashrc
+  alias rst='echo "Vuoi riavviare il pc? (y/n)" && read riavviare && if [[ "\$riavviare" =~ ^[Yy]$ ]]; then sudo reboot ; else echo "Riavvio annullato" ; fi'
+EOF
+fi
+
+# Chiede all'utente se vuole creare un alias che non e presente nella lista
+read -p "Vuoi creare un alias che non è presente nella lista? (y/n)" aliasnonpresente
+if [[ "$aliasnonpresente" =~ ^[Yy]$ ]]; then
+
+  # Chiede all'utente quale alias vuole creare
+  read -p "Quale alias vuoi creare? " alias
+
+  # Chiede all'utente cosa deve fare l'alias
+  read -p "Cosa deve fare l'alias? " aliascommand
+
+  # Crea l'alias
+  cat << EOF >> ~/.bashrc
+  alias $alias='$aliascommand'
+EOF
+source ~/.bashrc
 fi
 
