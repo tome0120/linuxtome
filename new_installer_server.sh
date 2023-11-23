@@ -18,8 +18,7 @@ alias dc='docker-compose'
 alias apti='sudo apt install \$1 -y'
 alias docker='sudo docker'
 EOT
-
-
+source ~/.bashrc
 
 
 # Aggiorna i pacchetti installati
@@ -162,7 +161,7 @@ fi
 # Chiede all'utente se vuole installare Uptime Kuma
 read -p "Vuoi installare Uptime Kuma? (y/n)" kuma
 
-if [[ "$risposta" =~ ^[Yy]$ ]]; then
+if [[ "$kuma" =~ ^[Yy]$ ]]; then
 
   # Avvia Uptime Kuma
   sudo docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:1
@@ -473,7 +472,7 @@ echo "Dashy installato con successo"
 fi
 
 # Chiede all'utente se vuole installare guacamole
-read -p "Vuoi installare guacamole? (y/n)" guacamole
+read -p "Vuoi installare guacamole? ricordati che non verra installato con docker compose (y/n)" guacamole
 if [[ "$guacamole" =~ ^[Yy]$ ]]; then
 
 wget https://git.io/fxZq5 -O guac-install.sh
@@ -811,7 +810,7 @@ echo "Wps-office installato con successo"
 fi
 
 # Chiede all'utente se vuole creare degli alias per aggiornare portainer
-read -p "Vuoi creare degli alias per aggiornare portainer? (y/n)" aliasportainer
+read -p "Vuoi creare un alias per aggiornare portainer? (y/n)" aliasportainer
 if [[ "$aliasportainer" =~ ^[Yy]$ ]]; then
 
   # Crea gli alias per aggiornare portainer
@@ -819,12 +818,13 @@ if [[ "$aliasportainer" =~ ^[Yy]$ ]]; then
 alias updateportainer='sudo docker stop portainer && sudo docker rm portainer && sudo docker pull portainer/portainer-ce:latest && sudo docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest'
 
 EOF
+source ~/.bashrc
 echo "Alias per aggiornare portainer creati con successo"
 echo "Per aggiornare portainer usa il comando updateportainer"
 fi
 
 # Chiede all'utente se vuole creare degli alias per aggiornare uptimekuma
-read -p "Vuoi creare degli alias per aggiornare uptimekuma? (y/n)" aliasuptimekuma
+read -p "Vuoi creare un alias per aggiornare uptimekuma? (y/n)" aliasuptimekuma
 if [[ "$aliasuptimekuma" =~ ^[Yy]$ ]]; then
 
   # Crea gli alias per aggiornare uptimekuma
@@ -832,6 +832,7 @@ if [[ "$aliasuptimekuma" =~ ^[Yy]$ ]]; then
 alias updateuptimekuma='sudo docker stop uptime-kuma && sudo docker rm uptime-kuma && sudo docker pull louislam/uptime-kuma:1 && sudo docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:1'
 
 EOF
+source ~/.bashrc
 echo "Alias per aggiornare uptimekuma creati con successo"
 echo "Per aggiornare uptimekuma usa il comando updateuptimekuma"
 fi
@@ -858,3 +859,100 @@ if [[ "$riepilogo" =~ ^[Yy]$ ]]; then
   echo "Alias per docker-compose: dc"
   echo "Alias per installare un pacchetto: apti"
 fi
+
+#chiedi allutente se vuole il riepilogo di tutte le app installate con docker compose se ha risoposto y o Y per installare la singola app
+read -p "Vuoi un riepilogo di tutte le app installate con docker compose? (y/n)" riepilogodockercompose
+if [[ "$riepilogodockercompose" =~ ^[Yy]$ ]]; then
+
+  if [[ "$kuma" =~ ^[Yy]$ ]]; then
+    echo "Uptime Kuma e stato installato per accedere vai su http://ip-address:3001"
+  fi
+  if [[ "$nginxproxymanager" =~ ^[Yy]$ ]]; then
+    echo "Nginx Proxy Manager e stato installato per accedere vai su http://ip-address:81"
+    echo "Username:admin@example.com"
+    echo "Password:changeme"
+  fi
+  if [[ "$chromium" =~ ^[Yy]$ ]]; then
+    echo "Chromium browser e stato installato per accedere vai su http://ip-address:3000"
+  fi
+  if [[ "$dockge" =~ ^[Yy]$ ]]; then
+    echo "Dockge e stato installato per accedere vai su http://ip-address:5001"
+  fi
+  if [[ "$portainer" =~ ^[Yy]$ ]]; then
+    echo "Portainer e stato installato per accedere vai su http://ip-address:8000"
+  fi
+  if [[ "$droppy" =~ ^[Yy]$ ]]; then
+    echo "Droppy e stato installato per accedere vai su http://ip-address:8989"
+  fi
+  if [[ "$libreoffice" =~ ^[Yy]$ ]]; then
+    echo "Libreoffice e stato installato per accedere vai su http://ip-address:3002"
+  fi
+  if [[ "$homeassistant" =~ ^[Yy]$ ]]; then
+    echo "Homeassistant e stato installato per accedere vai su http://ip-address:8123"
+  fi
+  if [[ "$remmia" =~ ^[Yy]$ ]]; then
+    echo "Remmia e stato installato per accedere vai su http://ip-address:3006"
+  fi
+  if [[ "$vscodium" =~ ^[Yy]$ ]]; then
+    echo "Vscodium e stato installato per accedere vai su http://ip-address:3007"
+  fi
+  if [[ "$dashy" =~ ^[Yy]$ ]]; then
+    echo "Dashy e stato installato per accedere vai su http://ip-address:4000"
+  fi
+  if [[ "$guacamole" =~ ^[Yy]$ ]]; then
+    echo "Guacamole e stato installato per accedere vai su http://ip-address:8080/guacamole"
+    echo "Username: guacadmin"
+    echo "Password: guacadmin"
+  fi
+  if [[ "$heimdall" =~ ^[Yy]$ ]]; then
+    echo "Heimdall e stato installato per accedere vai su http://ip-address:8085"
+  fi
+  if [[ "$kasm" =~ ^[Yy]$ ]]; then
+    echo "Kasm e stato installato per accedere vai su http://ip-address:3034"
+  fi
+  if [[ "$librespidtest" =~ ^[Yy]$ ]]; then
+    echo "Librespidtest e stato installato per accedere vai su http://ip-address:84"
+  fi
+  if [[ "$firefox" =~ ^[Yy]$ ]]; then
+    echo "Firefox e stato installato per accedere vai su http://ip-address:3000"
+  fi
+  if [[ "$qbittorrent" =~ ^[Yy]$ ]]; then
+    echo "Qbittorrent e stato installato per accedere vai su http://ip-address:8087"
+    echo "Username: admin"
+    echo "Password: adminadmin"
+  fi
+  if [[ "$unifi" =~ ^[Yy]$ ]]; then
+    echo "Unifi e stato installato per accedere vai su http://ip-address:8443"
+  fi
+  if [[ "$wiregard" =~ ^[Yy]$ ]]; then
+    echo "Wiregard e stato installato per accedere vai su http://ip-address:51820"
+  fi
+  if [[ "$wireshark" =~ ^[Yy]$ ]]; then
+    echo "Wireshark e stato installato per accedere vai su http://ip-address:3000"
+  fi
+  if [[ "$wps" =~ ^[Yy]$ ]]; then
+    echo "Wps e stato installato per accedere vai su http://ip-address:3000"
+  fi
+fi
+
+# Chiede all'utente se vuole installare un programma con apt install che non è presente nella lista
+read -p "Vuoi installare un programma che non è presente nella lista? usando apt (y/n)" aptinstall
+if [[ "$aptinstall" =~ ^[Yy]$ ]]; then
+
+  # Chiede all'utente quale programma vuole installare
+  read -p "Quale programma vuoi installare? " program
+
+  # Installa il programma
+  sudo apt install $program
+fi
+
+# Chiede all'utente se vuole creatre un alias  che quando scrive stdn gli chiede se vuole spegnere il pc
+read -p "Vuoi creare un alias che quando scrivv stdn ti chiede se vuole spegnere il pc? (y/n)" stdn
+if [[ "$stdn" =~ ^[Yy]$ ]]; then
+
+  # Crea gli alias per spegnere il pc
+  cat << EOF >> ~/.bashrc
+  alias stdn='echo "Vuoi spegnere il pc? (y/n)" && read spegnere && if [[ "\$spegnere" =~ ^[Yy]$ ]]; then sudo shutdown now ; else echo "Spegnimento annullato" ; fi'
+EOF
+fi
+
