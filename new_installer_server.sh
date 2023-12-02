@@ -897,8 +897,12 @@ if [[ "$riepilogo" =~ ^[Yy]$ ]]; then
   if [[ "$kuma" =~ ^[Yy]$ ]]; then
       echo "Alias per aggiornare uptimekuma: updateuptimekuma"
   fi
-  echo "Alias per spegnere il pc: stdn"
-  echo "Alias per riavviare il pc: rst"
+  if [[ "$stdn" =~ ^[Yy]$ ]]; then
+    echo "Alias per spegnere il pc: stdn"
+  fi
+  if [[ "$rst" =~ ^[Yy]$ ]]; then
+    echo "Alias per riavviare il pc: rst"
+  fi
   echo "Alias per pulire il terminale: clr"
   echo "Alias per pulire il terminale e andare nella cartella home: cclr"
   echo "Alias per vedere l'ip pubblico: ipext"
@@ -932,7 +936,7 @@ if [[ "$riepilogodockercompose" =~ ^[Yy]$ ]]; then
     echo "Dockge e stato installato per accedere vai su http://ip-address:5001"
   fi
   if [[ "$portainer" =~ ^[Yy]$ ]]; then
-    echo "Portainer e stato installato per accedere vai su http://ip-address:8000"
+    echo "Portainer e stato installato per accedere vai su http://ip-address:9443"
   fi
   if [[ "$droppy" =~ ^[Yy]$ ]]; then
     echo "Droppy e stato installato per accedere vai su http://ip-address:8989"
