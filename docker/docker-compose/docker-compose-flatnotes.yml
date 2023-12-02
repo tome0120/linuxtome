@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  flatnotes:
+    container_name: flatnotes
+    image: dullage/flatnotes:latest
+    environment:
+      PUID: 1000
+      GUID: 1000
+      FLATNOTES_AUTH_TYPE: "password" #options are 'none', 'password', or 'totp'
+
+      FLATNOTES_USERNAME: "tome"
+      FLATNOTES_PASSWORD: "tomtom"
+      FLATNOTES_SECRET_KEY: "AKEWuANrXGgNEzBlOWMqLznTvTKFkAPX"
+    volumes:
+      - "/home/docker/flatnotes/data:/data"
+      # Optional. Allows you to save the search index in a different location: 
+      # - "./index:/data/.flatnotes"
+    ports:
+      - "81:8080" #you can change '80' to whatever port number you need to
+    restart: unless-stopped
