@@ -852,10 +852,11 @@ fi
 
 # Chiede all'utente se vuole creare degli alias per aggiornare portainer
 read -p "Vuoi creare un alias per aggiornare portainer? (y/n)" aliasportainer
-if [[ "$aliasportainer" =~ ^[Yy]$ ]]; then
+if [[ "$portainer" =~ ^[Yy]$ ]]; then
+  if [[ "$aliasportainer" =~ ^[Yy]$ ]]; then
 
-  # Crea gli alias per aggiornare portainer
-  cat << EOF >> ~/.bashrc
+    # Crea gli alias per aggiornare dockge
+    cat << EOF >> ~/.bashrc
 alias updateportainer='sudo docker stop portainer && sudo docker rm portainer && sudo docker pull portainer/portainer-ce:latest && sudo docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest'
 
 EOF
@@ -863,10 +864,12 @@ source ~/.bashrc
 echo "Alias per aggiornare portainer creati con successo"
 echo "Per aggiornare portainer usa il comando updateportainer"
 fi
+fi
 
 # Chiede all'utente se vuole creare degli alias per aggiornare uptimekuma
 read -p "Vuoi creare un alias per aggiornare uptimekuma? (y/n)" aliasuptimekuma
-if [[ "$aliasuptimekuma" =~ ^[Yy]$ ]]; then
+if [[ "$kuma" =~ ^[Yy]$ ]]; then
+  if [[ "$aliasuptimekuma" =~ ^[Yy]$ ]]; then
 
   # Crea gli alias per aggiornare uptimekuma
   cat << EOF >> ~/.bashrc
@@ -876,6 +879,7 @@ EOF
 source ~/.bashrc
 echo "Alias per aggiornare uptimekuma creati con successo"
 echo "Per aggiornare uptimekuma usa il comando updateuptimekuma"
+fi
 fi
 
 # Chiede all'utente se vuole un riepilogo di tutti gli alias aggiunti/creati
@@ -994,3 +998,11 @@ if [[ "$template" =~ ^[Yy]$ ]]; then
   echo "3: https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates-2.0.json"
   
 fi
+
+
+
+
+
+
+
+
