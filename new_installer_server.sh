@@ -887,10 +887,10 @@ read -p "Vuoi un riepilogo di tutti gli alias aggiunti/creati? (y/n)" riepilogo
 if [[ "$riepilogo" =~ ^[Yy]$ ]]; then
 
   # Mostra un riepilogo di tutti gli alias aggiunti/creati
-  if [[ "$portainer" =~ ^[Yy]$ ]]; then
+  if [[ "$aliasportainer" =~ ^[Yy]$ ]]; then
     echo "Alias per aggiornare portainer: updateportainer"
   fi
-  if [[ "$kuma" =~ ^[Yy]$ ]]; then
+  if [[ "$aliasuptimekuma" =~ ^[Yy]$ ]]; then
       echo "Alias per aggiornare uptimekuma: updateuptimekuma"
   fi
   if [[ "$stdn" =~ ^[Yy]$ ]]; then
