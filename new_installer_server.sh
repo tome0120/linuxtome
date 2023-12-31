@@ -153,6 +153,28 @@ else
   echo "freerdp2-x11 non è installato"
 fi
 
+# Chiede all'utente se vuole installare homeassistant
+read -p "Vuoi installare homeassistant? (y/n)" homeassistant
+
+if [[ "$homeassistant" =~ ^[Yy]$ ]]; then
+
+  # Installa homeassistant
+  sudo apt-get update
+  sudo apt-get upgrade -y
+  sudo apt-get install -y python3 python3-dev python3-venv python3-pip bluez libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf build-essential libopenjp2-7 libtiff6 libturbojpeg0-dev tzdata ffmpeg liblapack3 liblapack-dev libatlas-base-dev
+
+  sudo useradd -rm homeassistant -G dialout,gpio,i2c
+  sudo mkdir /srv/homeassistant
+  sudo chown homeassistant:homeassistant /srv/homeassistant
+  sudo -u homeassistant -H -s
+  cd /srv/homeassistant
+  python3 -m venv .
+  source bin/activate
+  python3 -m pip install wheel
+  pip3 install homeassistant==2023.12.4
+  hass
+  print "per usare homeassistant vai su http://ip-address:8123"
+fi
 
 
 
