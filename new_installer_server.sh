@@ -153,31 +153,6 @@ else
   echo "freerdp2-x11 non è installato"
 fi
 
-# Chiede all'utente se vuole installare homeassistant
-read -p "Vuoi installare homeassistant? (y/n)" homeassistant
-
-if [[ "$homeassistant" =~ ^[Yy]$ ]]; then
-
-  # Installa homeassistant
-  sudo apt-get update
-  sudo apt-get upgrade -y
-  sudo apt-get install -y python3 python3-dev python3-venv python3-pip bluez libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf build-essential libopenjp2-7 libtiff6 libturbojpeg0-dev tzdata ffmpeg liblapack3 liblapack-dev libatlas-base-dev
-
-  sudo useradd -rm homeassistant -G dialout,gpio,i2c
-  sudo mkdir /srv/homeassistant
-  sudo chown homeassistant:homeassistant /srv/homeassistant
-  sudo -u homeassistant -H -s
-  cd /srv/homeassistant
-  python3 -m venv .
-  source bin/activate
-  python3 -m pip install wheel
-  pip3 install homeassistant==2023.12.4
-  hass
-  print "per usare homeassistant vai su http://ip-address:8123"
-fi
-
-
-
 
 # Chiede all'utente se vuole installare Uptime Kuma
 read -p "Vuoi installare Uptime Kuma? (y/n)" kuma
@@ -216,6 +191,21 @@ EOF
   # Avvia Nginx Proxy Manager
   sudo docker-compose -f nginx-proxy-manager.yml up -d
 echo "Nginx Proxy Manager installato con successo"
+fi
+
+#chiede all'utente se vuole installare portainer agent
+read -p "Vuoi installare portainer agent? (y/n)" portaineragent
+if [[ "$portaineragent" =~ ^[Yy]$ ]]; then
+
+  # Avvia portainer agent
+  docker run -d \
+    -p 9001:9001 \
+    --name portainer_agent \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+    portainer/agent:2.19.4
+
 fi
 
 # Chiede all'utente se vuole installare chromium browser con docker compose
