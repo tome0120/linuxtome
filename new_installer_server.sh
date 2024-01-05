@@ -176,10 +176,6 @@ if [[ "$homeassistant" =~ ^[Yy]$ ]]; then
   print "per usare homeassistant vai su http://ip-address:8123"
 fi
 
-
-
-
-
 # Chiede all'utente se vuole installare Uptime Kuma
 read -p "Vuoi installare Uptime Kuma? (y/n)" kuma
 
@@ -217,6 +213,21 @@ EOF
   # Avvia Nginx Proxy Manager
   sudo docker-compose -f nginx-proxy-manager.yml up -d
 echo "Nginx Proxy Manager installato con successo"
+fi
+
+#chiede all'utente se vuole installare portainer agent
+read -p "Vuoi installare portainer agent? (y/n)" portaineragent
+if [[ "$portaineragent" =~ ^[Yy]$ ]]; then
+
+  # Avvia portainer agent
+  docker run -d \
+    -p 9001:9001 \
+    --name portainer_agent \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+    portainer/agent:2.19.4
+
 fi
 
 # Chiede all'utente se vuole installare chromium browser con docker compose
