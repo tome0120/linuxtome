@@ -1,0 +1,20 @@
+cat <<EOT >> ~/.bashrc
+alias stdn='sudo shutdown now'
+alias rst='sudo reboot'
+alias clr='clear'
+alias cclr='cd && clr'
+alias ipext='curl ipinfo.io'
+alias cbash='nano ~/.bashrc'
+alias rbash='source ~/.bashrc'
+alias meteo='curl wttr.in/verona'
+alias aptu='sudo apt update && sudo apt upgrade -y'
+alias ipa='ip -c a'
+alias ch='history -c'
+alias sn='sudo nano'
+alias dc='sudo docker-compose'
+alias apti='sudo apt install \$1 -y'
+alias docker='sudo docker'
+alias stdn='sudo shutdown now'
+alias rst='sudo reboot'
+EOT
+source ~/.bashrc
