@@ -25,8 +25,144 @@ source ~/.bashrc
 sudo apt update
 sudo apt upgrade -y
 
-# Installa i pacchetti richiesti
-sudo apt install openssh-server sl wget python3 curl git nano htop make perl gcc bison flex build-essential software-properties-common apt-transport-https ufw freerdp2-dev freerdp2-x11 docker.io docker-compose -y
+
+# chiende all'utente se vuole installare un programma con apt install
+read -p "Vuoi installare sl? (y/n)" sl
+if [[ "$sl" =~ ^[Yy]$ ]]; then
+  sudo apt install sl -y
+fi
+
+# chiede all'utente se vuole installare wget
+read -p "Vuoi installare wget? (y/n)" wget
+if [[ "$wget" =~ ^[Yy]$ ]]; then
+  sudo apt install wget -y
+fi
+
+# chiede all'utente se vuole installare python3
+read -p "Vuoi installare python3? (y/n)" python3
+if [[ "$python3" =~ ^[Yy]$ ]]; then
+  sudo apt install python3 -y
+fi
+
+# chiede all'utente se vuole installare curl
+read -p "Vuoi installare curl? (y/n)" curl
+if [[ "$curl" =~ ^[Yy]$ ]]; then
+  sudo apt install curl -y
+fi
+
+# chiede all'utente se vuole installare git
+
+read -p "Vuoi installare git? (y/n)" git
+if [[ "$git" =~ ^[Yy]$ ]]; then
+  sudo apt install git -y
+fi
+
+# chiede all'utente se vuole installare nano
+
+read -p "Vuoi installare nano? (y/n)" nano
+if [[ "$nano" =~ ^[Yy]$ ]]; then
+  sudo apt install nano -y
+fi
+
+# chiede all'utente se vuole installare htop
+
+read -p "Vuoi installare htop? (y/n)" htop
+if [[ "$htop" =~ ^[Yy]$ ]]; then
+  sudo apt install htop -y
+fi
+
+# chiede all'utente se vuole installare make
+
+read -p "Vuoi installare make? (y/n)" make
+if [[ "$make" =~ ^[Yy]$ ]]; then
+  sudo apt install make -y
+fi
+
+# chiede all'utente se vuole installare perl
+
+read -p "Vuoi installare perl? (y/n)" perl
+if [[ "$perl" =~ ^[Yy]$ ]]; then
+  sudo apt install perl -y
+fi
+
+# chiede all'utente se vuole installare gcc
+
+read -p "Vuoi installare gcc? (y/n)" gcc
+if [[ "$gcc" =~ ^[Yy]$ ]]; then
+  sudo apt install gcc -y
+fi
+
+# chiede all'utente se vuole installare bison
+
+read -p "Vuoi installare bison? (y/n)" bison
+if [[ "$bison" =~ ^[Yy]$ ]]; then
+  sudo apt install bison -y
+fi
+
+# chiede all'utente se vuole installare flex
+
+read -p "Vuoi installare flex? (y/n)" flex
+if [[ "$flex" =~ ^[Yy]$ ]]; then
+  sudo apt install flex -y
+fi
+
+# chiede all'utente se vuole installare build-essential
+
+read -p "Vuoi installare build-essential? (y/n)" build-essential
+if [[ "$build-essential" =~ ^[Yy]$ ]]; then
+  sudo apt install build-essential -y
+fi
+
+# chiede all'utente se vuole installare software-properties-common
+
+read -p "Vuoi installare software-properties-common? (y/n)" software-properties-common
+
+if [[ "$software-properties-common" =~ ^[Yy]$ ]]; then
+  sudo apt install software-properties-common -y
+fi
+
+# chiede all'utente se vuole installare apt-transport-https
+
+read -p "Vuoi installare apt-transport-https? (y/n)" apt-transport-https
+if [[ "$apt-transport-https" =~ ^[Yy]$ ]]; then
+  sudo apt install apt-transport-https -y
+fi
+
+# chiede all'utente se vuole installare ufw
+
+read -p "Vuoi installare ufw? (y/n)" ufw
+if [[ "$ufw" =~ ^[Yy]$ ]]; then
+  sudo apt install ufw -y
+fi
+
+# chiede all'utente se vuole installare freerdp2-dev
+
+read -p "Vuoi installare freerdp2-dev? (y/n)" freerdp2-dev
+if [[ "$freerdp2-dev" =~ ^[Yy]$ ]]; then
+  sudo apt install freerdp2-dev -y
+fi
+
+# chiede all'utente se vuole installare freerdp2-x11
+
+read -p "Vuoi installare freerdp2-x11? (y/n)" freerdp2-x11
+if [[ "$freerdp2-x11" =~ ^[Yy]$ ]]; then
+  sudo apt install freerdp2-x11 -y
+fi
+
+# Chiede all'utente se vuole installare Docker
+
+read -p "Vuoi installare Docker? (y/n)" docker
+if [[ "$docker" =~ ^[Yy]$ ]]; then
+  sudo apt install docker.io -y
+fi
+
+# Chiede all'utente se vuole installare Docker Compose
+
+read -p "Vuoi installare Docker Compose? (y/n)" dockercompose
+if [[ "$dockercompose" =~ ^[Yy]$ ]]; then
+  sudo apt install docker-compose -y
+fi
+
 
 # Aggiorna i pacchetti installati
 sudo apt update
@@ -811,6 +947,7 @@ EOF
 echo "Wps-office installato con successo"
 
 fi
+
 
 
 
